@@ -1,4 +1,5 @@
 const Hagman = function (word, remain) {
+  this.orginal = word
   this.word = word.toLowerCase().split("");
   this.guessWord = [];
   this.remain = remain
@@ -28,11 +29,24 @@ Hagman.prototype.makingGuess = function(letter){
   }
 }
 
+Hagman.prototype.gameStatus = function(){
+  const isWin = this.word.every((letter)=>{
+    return this.guessWord.includes(letter)
+  })
+  if(isWin){
+    console.log("Congrats you won");
+  }else{
+    console.log(`Nice try, the word is ${this.orginal}`);
+  }
+  
+}
+
 const game1 = new Hagman("cat", 2);
 console.log(game1.getPuzzle());
 game1.makingGuess('c')
 game1.makingGuess('t')
-game1.makingGuess('z')
+game1.makingGuess('a')
 console.log(game1.getPuzzle());
 console.log(game1.remain);
+game1.gameStatus()
 
