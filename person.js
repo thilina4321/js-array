@@ -8,9 +8,20 @@ class Person {
 
   getBio() {
     let bio = `${this.firstName} is ${this.age} years old`;
-    return bio
+    return bio;
   }
 }
 
-const person1 = new Person("Thilina", 'Dilshan', 23);
-console.log(person1.getBio())
+class Employee extends Person{
+    constructor(firstName, lastName, age, likes=[], position){
+        super(firstName, lastName, age, likes)
+        this.position = position
+    }
+    
+    getBio(){
+        return `${this.firstName} is a ${this.position}`
+    }
+}
+
+const person1 = new Employee("Thilina", "Dilshan", 23, [], 'Student');
+console.log(person1.getBio());
